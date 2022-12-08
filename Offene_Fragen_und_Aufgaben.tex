@@ -35,13 +35,14 @@
 \section{Fragen}
 \begin{itemize}
   \item Lösung des Shift/Reduce Konflikt. Was steht auf dem Keller? Was ist das nächste Zeichen?
-  \item Im Konfli
+  \item Wie funktioniert der Keller im Bezug auf die Elimation der linksrekursion? Script Seite 174
   \begin{itemize}
     \item []  Ich antworte ihr auf die Frage  
   \end{itemize}
 \end{itemize}
 
 \section{Aufgaben}
+Auf Seite 7 im Script sind die Übungsaufgaben verzeichnet
 \begin{itemize}
   \item Strukturierung von einem Übersetzer
   \item Fragen zur Grammatik
@@ -63,6 +64,29 @@
   
 \end{itemize}
 
+\newpage
+
+\section{LL-Eigenschaften}
+Seite 166 im Script stehen die Eigenschaften \\
+Wie andere Grammatik transformiert findet man im Script auf Seite 169
+Eine Grammatik kann nicht die LL-Eigenschaften erfüllen wenn sie linksrekursion bzw. linksgleiche Produktionen enthält (Was sind Produktionen?)
+\begin{align*}
+    A::= A \alpha \\
+    \Longrightarrow \\
+    A::= \beta A' \\
+    A'::=\alpha A' | \epsilon
+\end{align*}
+
+
+\section{LL-Automaten}
+Seite 177 findet man die LL-Automaten \\
+\begin{enumerate}
+  \item Transfomieren Sie die Grammatik, so dass die Grammatik die LL(1) Bedingung erfüllt
+  \item Erstellen Sie den nichtdeterministischen LL(1)-Automaten für diese Grammatik
+  \item Erstellen Sie hieraus den deterministischen LL(1)-Automaten\\ (nun ja er ist nicht ganz deterministisch, da die Produktionen eines Nichtterminals die LL(1) Bedingung nicht erfüllt, erstellen Sie den Automaten trotzdem!)\\
+  Markieren Sie die nichtdeterministischen Automatenregeln.
+  \item Akzeptieren Sie mit diesem Automaten das "Programm" i + i[i+i]
+\end{enumerate}
 
 
 
