@@ -1,3 +1,4 @@
+% !TeX root = Offene_Fragen_und_Aufgaben.tex
 \documentclass[
   ngerman
   ,12pt
@@ -11,18 +12,19 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{comment}
 
 \hyphenation{Differential-gleichung}
 \hyphenation{Über-tragungs-ope-ra-tors}
 \hyphenation{E/A-Differential-gleichung}
 
 \begin{document}
-
+\begin{comment}
 \begin{titlepage}
   \begin{center}
-      {\Huge \textbf{Compiler-Abau}}\\[1.5cm]
+      {\Huge \textbf{Compilerbau}}\\[1.5cm]
       {\Large Offene Fragen und Aufgaben}\\[1cm]
-      {\Huge Test}\\[7cm]
+      {\Huge Übersicht}\\[7cm]
       {\large Matrikelnummer: \textbf{8809469}}\\[0.5cm]
       {\large Kurs: TINF21B3}\\[0.5cm]
       {\large Abgabedatum 16.12.2022}
@@ -32,11 +34,14 @@
 \newpage
 \tableofcontents
 \newpage
+\end{comment}
+
 \section{Fragen}
 \begin{itemize}
   \item Lösung des Shift/Reduce Konflikt. Was steht auf dem Keller? Was ist das nächste Zeichen?
   \item Wie funktioniert der Keller im Bezug auf die Elimation der linksrekursion? Script Seite 174
-  \item Wie testet man auf LL-Bedingung? 
+  \item Wie testet man auf LL-Bedingung? siehe hier \ref{ref}
+  \item Wie geh ich mit Mehrdeutigkeit um im Shift Reduce Kontext?
   \begin{itemize}
     \item []  Ich antworte ihr auf die Frage  
   \end{itemize}
@@ -94,7 +99,7 @@ $FF_1 = FIRST(T E' FOLLOW(E))={i*}$ das in den geschweiften Klammern ist das $Fi
 Falls doch ist es das $First$ vom nächssten nicht Terminal. 
 Falls alle ein $\epsilon$ in ihrer First\_Menge haben ist es das $Follow(E')$.\\
 \\
-\subsection*{LL-Bedingungen}
+\subsection{LL-Bedingungen \label{ref}}
 Die Grammatik erfüllt die LL-Bedingungen wenn die gleichen Follows in den First-Follow-Mengen einen unterschiedlichen Inhalt haben.
 \begin{align*}
   FF_1 = FIRST(T E' FOLLOW(E))={i*}\\
@@ -103,7 +108,7 @@ Die Grammatik erfüllt die LL-Bedingungen wenn die gleichen Follows in den First
 
 
 
-\section{LL-Automaten}
+\subsection{LL-Automaten}
 Seite 177 findet man die LL-Automaten \\
 \begin{itemize}
   \item Der LL-Automat erzeugt eine Linksableitung des Eingabewortes
@@ -131,7 +136,70 @@ Die Regel schreib man einfach umgekehrt zur Grammatik.
   E'qt\longrightarrow E'T+
 \end{align*}
 
+\section{LR-Automaten}
 
+\begin{center}
+  \includegraphics[height=7cm]{image/Screenshot 2022-12-10 170319.jpg}
+\end{center}
+\begin{center}
+  \includegraphics[height=7.5cm]{image/Screenshot 2022-12-10 170336.jpg}
+\end{center}
 
+Mehrdeutigkeit wird unterbunden in dem bevorzugt gesschiftet wird. $\Longrightarrow$ Lösung Dangeling-Else Problem.
+
+\section{Struktur vom Compiler}
+\begin{enumerate}
+  \item Wozu kann ein Übersetzerbenutzt werden?
+  \begin{itemize}
+    \item [] Erzeugen von Maschinencode 
+    \item [] Programmanalyse und das Füllen einer Datenbank mit Informationen über das Programm
+    \item [] Programmtransformation in eine andere Programmiersprache
+  \end{itemize}
+  \item Wie ist ein Übersetzer strukturiert? Beschreiben Sie \textbf{kurz} die Aufgaben und Ergebnisse der einzelen Phasen!
+  \begin{itemize}
+    \item []1. Lexikalische Analyse, 2.syntaktische Analyse, 3. Transformation(nicht ausreichend)
+  \end{itemize}
+  \item Welche Rolle spielt die Grammatik in einer Sprache?
+  \begin{itemize}
+    \item [a]Eine Grammatik dient zur Spezifikation der Programmiersprachr für den Benutzer der Sprache, damit dieser weiß, wie ein korrektes Programm geschriebenwerden kann(ANleitung zum Generieren eines Satzes der Sprache).
+    \item [b]Eine Grammatik dient zur Spezifikation des Übersetzters für diese Programmiersprache(Anleitung zur Konstruktion eines Akzeptors für diese Sprache).
+  \end{itemize}
+\end{enumerate}
+
+\section{Fragen zur Grammatik}
+\begin{enumerate}
+  \item Geben sie die Definition einer regulären Grammatik an.
+  \begin{itemize}
+    \item [] $G=(N,T,P,Z)$, Nichtterminale(z.B. E,T,D die Dinge mit denen man die Regeln macht), Terminale = Symbole(z.B. +,-,*),Produktion (Regel), Startsymbol
+  \end{itemize}
+  \item Geben sie die Definition des Begriffes der von einer Grammatik erzeugten Sprache an.
+  \begin{align*}
+    L=\{w\in T* | Z \Longrightarrow*w\}
+  \end{align*}
+  \begin{itemize}
+    \item Kein Plan was das heißen soll steht auch auf Seite 71 im Script
+  \end{itemize}
+  \item Geben Sie die Definition eines endlichen Automaten an.
+  \item Geben sie die Definition der von diesem Automaten akzeptierten Sprache an.(Welche Art von Sprachen wird vom Automat akzeptiert)
+  \item Was ist der Zusammenhang zwischen einem endlichen Automaten A, der die von G erzeugte Sprache akzeptiert.
+  \begin{itemize}
+    \item Zu jeder regulären Grammatik G gibt es einen endlichen Automaten A, der die von G erzeugte Sprache akzeptiert(Gibt einen Beweis aber kein bock den hinzuschreiben oder zu lernen)
+
+  \end{itemize}
+  \item Was ist der Zusammenhang zwischen deterministischen und nichtdeterministischen endlichen Automaten?
+  \begin{itemize}
+    \item Zu jedem nichtdeterministischen endlichen Automaten gibt es einen deterministischen endlichen Automaten, der die gleiche Sprache akzeptiert.
+  \end{itemize}
+  \item  Es wird eine Sprache beschrieben an dieser sollen folgende Aufgaben durch geführt werden
+  \begin{itemize}
+    \item [a] Die rechts reguläre Grammatik soll für die Sprache angegeben werden.
+    \item [b] Für die Grammatik soll der Endliche Automat angegeben werden. (eigentlich dann mit Shift und Reduce)
+    \item [c] Stellen sie ihren Automaten graphisch dar. Kennzeichnen Sie Start- und Finalzustände.
+    \item [d] Ist Ihr Automat deterministisch? Falls nein,kennzeichnen Sie nicht-deterministischen Übergänge.
+  \end{itemize}
+  \item Konstruieren Sie (mittels des aus der Vorlesung bekannten Verfahrens) den deterministischen
+  endlichen Automaten, der die von Ihnen definierten C-Bezeichner akzeptiert. Zeichen Sie den resultierenden
+  Automaten(Es ist die Teilmengen Konstruktion)
+\end{enumerate}
 
 \end{document}
