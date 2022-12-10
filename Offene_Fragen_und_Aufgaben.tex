@@ -36,40 +36,46 @@
 \begin{itemize}
   \item Lösung des Shift/Reduce Konflikt. Was steht auf dem Keller? Was ist das nächste Zeichen?
   \item Wie funktioniert der Keller im Bezug auf die Elimation der linksrekursion? Script Seite 174
+  \item Wie testet man auf LL-Bedingung? 
   \begin{itemize}
     \item []  Ich antworte ihr auf die Frage  
   \end{itemize}
 \end{itemize}
 
 \section{Aufgaben}
-Auf Seite 7 im Script sind die Übungsaufgaben verzeichnet
+Auf Seite 7 im Script sind die Übungsaufgaben verzeichnet\\
+Laut den Alt-Klausuren
 \begin{itemize}
   \item Strukturierung von einem Übersetzer
   \item Fragen zur Grammatik
   \item Chomsky-Hierarchie
   \item Lark+Ast oder Rex
   \item Top-Down-Parser/Rekursiver Abstiegs-Parser
-  \begin{itemize}
-    \item Grammatik linksrekursion rausbekommen
-    \item First-Follow-Menge berechnen 
-    \item LL1 Eigenschaften herausfinden
-    \item Automat
-    \item Automat mit First-Follow
-  \end{itemize}
+  \item Abstrakter Syntaxbaum
   \begin{itemize}
     \item Grammatik 
     \item Automat
     \item Ableitung
   \end{itemize}
-  
+\end{itemize}
+Laut Vollmer
+\begin{itemize}
+  \item Scanner
+  \item Parser (ist ein LR-Automat)
+  \item Baum
+  \item rekursiver Abstiegsparser (ist ein LL-Automat)
+\end{itemize}
+Andere Aufgaben
+\begin{itemize}
+  \item Quiz File
 \end{itemize}
 
-\newpage
 
 \section{LL-Eigenschaften}
 Seite 166 im Script stehen die Eigenschaften \\
 Wie andere Grammatik transformiert findet man im Script auf Seite 169
 Eine Grammatik kann nicht die LL-Eigenschaften erfüllen wenn sie linksrekursion bzw. linksgleiche Produktionen enthält (Was sind Produktionen?)
+Allgemeine Elimination von linksrekursion auf Seite 171 im Script
 \begin{align*}
     A::= A \alpha \\
     \Longrightarrow \\
@@ -77,9 +83,33 @@ Eine Grammatik kann nicht die LL-Eigenschaften erfüllen wenn sie linksrekursion
     A'::=\alpha A' | \epsilon
 \end{align*}
 
+Definition (Linksfaktorisierung). Problem $FIRST(..FOLLOW(..))$ nicht disjunkt:
+\begin{align*}
+  A::=\alpha \beta_1  |  \alpha \beta_2 \\
+  \Longrightarrow\\
+  A::= \alpha A'\\
+  A'::= \beta_1  |  \beta_2
+\end{align*}
+$FF_1 = FIRST(T E' FOLLOW(E))={i*}$ das in den geschweiften Klammern ist das $First(T)$ wenn $\epsilon$ nicht in der First-Menge ist. 
+Falls doch ist es das $First$ vom nächssten nicht Terminal. 
+Falls alle ein $\epsilon$ in ihrer First\_Menge haben ist es das $Follow(E')$.\\
+\\
+\subsection*{LL-Bedingungen}
+Die Grammatik erfüllt die LL-Bedingungen wenn die gleichen Follows in den First-Follow-Mengen einen unterschiedlichen Inhalt haben.
+\begin{align*}
+  FF_1 = FIRST(T E' FOLLOW(E))={i*}\\
+  FF_2 = FIRST(\epsilon FOLLOW(E))={\#}
+\end{align*}
+
+
 
 \section{LL-Automaten}
 Seite 177 findet man die LL-Automaten \\
+\begin{itemize}
+  \item Der LL-Automat erzeugt eine Linksableitung des Eingabewortes
+  \item Erfüllt $G$ die LL-Bedingungen, dann kann ein deterministischer Automat konstruiert werden.
+\end{itemize}
+
 \begin{enumerate}
   \item Transfomieren Sie die Grammatik, so dass die Grammatik die LL(1) Bedingung erfüllt
   \item Erstellen Sie den nichtdeterministischen LL(1)-Automaten für diese Grammatik
@@ -87,6 +117,20 @@ Seite 177 findet man die LL-Automaten \\
   Markieren Sie die nichtdeterministischen Automatenregeln.
   \item Akzeptieren Sie mit diesem Automaten das "Programm" i + i[i+i]
 \end{enumerate}
+Beispiel Aufgabe auf Seite 179 im Script\\
+\begin{itemize}
+  \item Grammatik linksrekursion rausbekommen
+  \item First-Follow-Menge berechnen 
+  \item LL1 Eigenschaften herausfinden
+  \item Automat
+  \item Automat mit First-Follow
+\end{itemize}
+Die Regel schreib man einfach umgekehrt zur Grammatik.
+\begin{align*}
+  E' ::= +TE'\\
+  E'qt\longrightarrow E'T+
+\end{align*}
+
 
 
 
