@@ -1,0 +1,63 @@
+\section{Fragen zur Grammatik}
+\begin{enumerate}
+  \item Geben sie die Definition einer regulären Grammatik an.
+  \begin{itemize}
+    \item [] $G=(N,T,P,Z)$, Nichtterminale(z.B. E,T,D die Dinge mit denen man die Regeln macht), Terminale = Symbole(z.B. +,-,*),Produktion (Regel), Startsymbol
+  \end{itemize}
+  \item Geben sie die Definition des Begriffes der von einer Grammatik erzeugten Sprache an.
+  \begin{align*}
+    L=\{w\in T* | Z \Longrightarrow*w\}
+  \end{align*}
+  \begin{itemize}
+    \item Kein Plan was das heißen soll steht auch auf Seite 71 im Script
+  \end{itemize}
+  \item Geben Sie die Definition eines endlichen Automaten an.
+  \item Geben sie die Definition der von diesem Automaten akzeptierten Sprache an.(Welche Art von Sprachen wird vom Automat akzeptiert)
+  \item Was ist der Zusammenhang zwischen einem endlichen Automaten A, der die von G erzeugte Sprache akzeptiert.
+  \begin{itemize}
+    \item Zu jeder regulären Grammatik G gibt es einen endlichen Automaten A, der die von G erzeugte Sprache akzeptiert(Gibt einen Beweis aber kein bock den hinzuschreiben oder zu lernen)
+
+  \end{itemize}
+  \item Was ist der Zusammenhang zwischen deterministischen und nichtdeterministischen endlichen Automaten?
+  \begin{itemize}
+    \item Zu jedem nichtdeterministischen endlichen Automaten gibt es einen deterministischen endlichen Automaten, der die gleiche Sprache akzeptiert.
+  \end{itemize}
+  \item  Es wird eine Sprache beschrieben an dieser sollen folgende Aufgaben durch geführt werden
+  \begin{itemize}
+    \item [a] Die rechts reguläre Grammatik soll für die Sprache angegeben werden.
+    \item [b] Für die Grammatik soll der Endliche Automat angegeben werden. (eigentlich dann mit Shift und Reduce)
+    \item [c] Stellen sie ihren Automaten graphisch dar. Kennzeichnen Sie Start- und Finalzustände.
+    \item [d] Ist Ihr Automat deterministisch? Falls nein,kennzeichnen Sie nicht-deterministischen Übergänge.
+  \end{itemize}
+  \item Konstruieren Sie (mittels des aus der Vorlesung bekannten Verfahrens) den deterministischen
+  endlichen Automaten, der die von Ihnen definierten C-Bezeichner akzeptiert. Zeichen Sie den resultierenden
+  Automaten(Es ist die Teilmengen Konstruktion)
+\end{enumerate}
+
+\subsection{Chomsky-Hierarchie}
+\begin{itemize}
+  \item [] \textbf{Typ-0, rekursiv aufzählbar}
+  \item [] \textbf{Typ-1, kontextsensitiv}
+  \begin{itemize}
+    \item [] $xAy::=xwy$
+    \item [] Ist $Z \longrightarrow \epsilon$, dann darf $Z$ nicht auf der rechten Seite einer Regel vorkommen.
+  \end{itemize}
+  \item [] \textbf{Typ-2, kontextfrei}
+  \begin{itemize}
+    \item []$A \longrightarrow w$
+    \item [] Keller TM
+    \item [] Nichtterminal durch Wort ersetzen entweder rechts oder links regulär
+  \end{itemize}
+  \item [] \textbf{Typ-3, regulär}
+  \begin{itemize}
+    \item [] $A \longrightarrow a$ oder $A \longrightarrow \epsilon $
+    \item [] Nichtterminal weder durch eine Folge an Zeichen ersetzt
+    \item [] \textbf{rechts-regulär} $A \longrightarrow aB$
+    \item [] \textbf{links-regulär} $A \longrightarrow Ba$
+  \end{itemize}
+\end{itemize}
+\subsection{Pumping Lemma}
+$a^nb^n$ ist das Kammagebirge ..(()).. ist nicht regulär und verletzt das Pumping Lemma\\
+xabz\\
+xababz \\
+xaaabbbz das geht nicht deswegen nicht regulär

@@ -1,0 +1,19 @@
+DEFINE  /* some abbreviations */
+  digit  = {0-9}    
+  letter = {a-zA-Z}	.
+  lowercase = {a-z}	.
+  
+  var_type = ( 'int' | 'float' | 'string' ) .
+  in_out = ( 'in' | 'out' ) .
+
+RULE
+#STD# lowercase (letter | digit)* :
+	{ unsigned int identifier_len = l_scan_GetUpper(identifier_buffer);
+	  if(identifier_len < MAX_IDENTIFIER_LEN){
+		l_scan_Attribute.identifier.Value = MakeIdent(identifier_buffer, identifier_len);
+	  } else {
+		l_scan_Attribute.identifier.Value = NoIdent;
+		Message("  Identifier is longer than max allowed length\n", xxRestriction, l_scan_Attribute.Position);
+	  } 
+	  return tok_identifier;
+	}

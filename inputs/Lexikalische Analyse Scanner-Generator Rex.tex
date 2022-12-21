@@ -1,0 +1,47 @@
+\subsection*{Lexikalische Analyse / Scanner-Generator: Rex}
+\textbf{Eingabe}
+\begin{itemize}
+    
+    \item [-] Quelltext = Folge (ASCII) Zeichen
+\end{itemize}
+\textbf{Ausgabe}
+\begin{itemize}
+    \item [-] Folge von Symbole
+    \item [-] Attribute für Token
+\end{itemize}
+\textbf{Aufgaben}
+\begin{itemize}
+    \item [-] Zusammenfassung von (ASCII) Zeichen zu Token
+    \item [-] Überlesen von Leerzeichen und Kommentaren
+    \item [-] Konvertierung / Normalisierung
+    \item [-] Berechnung der Token-Attribute
+\end{itemize}
+\textbf{Spezifikationsmethode}
+\begin{itemize}
+    \item [-] Reguläre Ausdrücke
+    \item [-] Regeln zur Auflösung von Mehrdeutigkeiten???
+    \item [-] Semantische Aktionen (C-Anweisungen)\\
+\end{itemize}
+In der Klausur sollen die Spezifikationen definiert werden. 
+\begin{enumerate}
+    \item Vordefinerte Regeln
+    \item Benannte reguläre Ausdrücke
+    \item Schlüsselwörter sind case-inte siehe Skript Seite 145
+    \item Ganze Zahl oder Festkommazahl?
+    \item Bezeichner oder Schlüsselwört?
+    \item Kommentare Überlesen
+    \item DEA: Und erkann doch zählen!
+    \item String-Literale akzeptieren und transformieren
+\end{enumerate}
+\subsection{Benannte reguläre Ausdrücke}
+Häufig benötigt man einen (komplexen) Ausdruck 
+mehrfach in einer Scannerspezifikation, z. B. $\textbf{ \{ 0 -9 \} }$ oder $\textbf{\{a-zA-Z\_\}}$. 
+Anstatt diese nun immer wieder in den Regeln zu notieren, kann man auch sogenannte benannte reguläre Ausdrücke benutzen.\\
+Der Ausdruck wird in \textbf{DEFINE} definiert und in \textbf{Rule} wird die Benutzung definert.
+%\input{inputs/BenanntereguläreAusdrücke.tex}
+In der Klausur vllt bool
+\subsection*{Pattern Matches-Regel}
+\subsection*{Regel: First Rule Matches}
+Gibt es mehrere regulären Ausdrücke in einer Scannerspezifikation, welche alle die aktuellen Zeichen $z_0z_1z_2 . . . z_n$ der Eingabe akzeptieren würden, wird
+die Regel zur Akzeption ausgewählt, welche textuell zuerst in der Scannerspezifikation steht.
+
